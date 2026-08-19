@@ -10,14 +10,20 @@
 
 //Sessão de prototipação de funções
 int somar(int a, int b);
+int subtrair(int a, int b);
+int multiplicar(int a, int b);
+double dividir(int a, int b);
+int calcularPotencia(int a, int b);
 
 main() {
 	
 	setlocale(LC_ALL,"Portuguese");
 	
-	int a, b, soma;
+	int a, b, soma, subtracao, multiplicacao, potencia;
+	double  divisao;
 	
-	a = b = soma = 0;
+	a = b = soma = subtracao = multiplicacao = potencia = 0;
+	divisao = 0.0;
 	
 	printf("Digite o valor de A: ");
 	scanf("%d", &a);
@@ -25,8 +31,16 @@ main() {
 	scanf("%d", &b);
 	
 	soma = somar(a, b);
+	subtracao = subtrair(a, b);
+	multiplicacao = multiplicar(a, b);
+	divisao = dividir(a, b);
+	potencia = calcularPotencia(a, b);
 	
 	printf("\nA soma de %d + %d é igual a %d", a, b, soma);
+	printf("\nA subtração de %d - %d é igual a %d", a, b, subtracao);
+	printf("\nA multiplicação de %d x %d é igual a %d", a, b, multiplicacao);
+	printf("\nA divisão de %d / %d é igual a %.2lf", a, b, divisao);
+	printf("\nA potência de %d por %d é igual a %d", a, b, potencia);
 		
 } //fim do programa
 
@@ -37,4 +51,40 @@ int somar(int a, int b) {
 	result = a + b;
 	return result;
 			
+}
+
+int subtrair(int a, int b) {
+	
+	int result = 0;
+	result = a - b;
+	return result;
+			
+}
+
+int multiplicar(int a, int b) {
+	
+	int result = 0;
+	result = a * b;
+	return result;
+			
+}
+
+double dividir(int a, int b) {
+	
+	double result = 0.0;
+	result = (double)a / b;
+	return result;
+			
+}
+
+int calcularPotencia(int a, int b) {
+	
+	int result = a;
+	
+	for (int i = 1; i < b; i++) {
+		result = result * a;
+	}
+	
+	return result;
+	
 }
