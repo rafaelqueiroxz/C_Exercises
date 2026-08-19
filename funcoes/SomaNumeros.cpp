@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <locale.h>
+#include <Math.h>
 
 //Sessão de prototipação de funções
 int somar(int a, int b);
@@ -14,16 +15,18 @@ int subtrair(int a, int b);
 int multiplicar(int a, int b);
 double dividir(int a, int b);
 int calcularPotencia(int a, int b);
+int calcularPotenciaJVNutella(int a, int b);
+double calcularRaizQuadrada(int a);
 
 main() {
 	
 	setlocale(LC_ALL,"Portuguese");
 	
-	int a, b, soma, subtracao, multiplicacao, potencia;
-	double  divisao;
+	int a, b, soma, subtracao, multiplicacao, potencia, potenciaJoaoVitorNutella;
+	double  divisao, raizQuadradaA, raizQuadradaSoma;
 	
-	a = b = soma = subtracao = multiplicacao = potencia = 0;
-	divisao = 0.0;
+	a = b = soma = subtracao = multiplicacao = potencia = potenciaJoaoVitorNutella = 0;
+	divisao = raizQuadradaA = raizQuadradaSoma = 0.0;
 	
 	printf("Digite o valor de A: ");
 	scanf("%d", &a);
@@ -35,12 +38,18 @@ main() {
 	multiplicacao = multiplicar(a, b);
 	divisao = dividir(a, b);
 	potencia = calcularPotencia(a, b);
+	potenciaJoaoVitorNutella = calcularPotenciaJVNutella(a, b);
+	raizQuadradaA = calcularRaizQuadrada(a);
+	raizQuadradaSoma = calcularRaizQuadrada(somar(a, b));
 	
 	printf("\nA soma de %d + %d é igual a %d", a, b, soma);
 	printf("\nA subtração de %d - %d é igual a %d", a, b, subtracao);
 	printf("\nA multiplicação de %d x %d é igual a %d", a, b, multiplicacao);
 	printf("\nA divisão de %d / %d é igual a %.2lf", a, b, divisao);
 	printf("\nA potência de %d por %d é igual a %d", a, b, potencia);
+	printf("\nA potência de %d por %d (Calculada com o pow da lib Math.h) é igual a %d", a, b, potenciaJoaoVitorNutella);
+	printf("\nA raiz quadrada de %d é igual a %.2lf", a, raizQuadradaA);
+	printf("\nA raiz quadrada da soma de %d + %d é igual a %.2lf", a, b, raizQuadradaSoma);
 		
 } //fim do programa
 
@@ -87,4 +96,14 @@ int calcularPotencia(int a, int b) {
 	
 	return result;
 	
+}
+
+int calcularPotenciaJVNutella(int a, int b){
+	
+	return pow(a, b);
+	
+}
+
+double calcularRaizQuadrada(int a) {
+	sqrt(a);
 }
